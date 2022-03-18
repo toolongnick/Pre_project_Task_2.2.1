@@ -28,6 +28,7 @@ public class Car {
         this.series = series;
         this.model = model;
     }
+
     public Long getId() {
         return id;
     }

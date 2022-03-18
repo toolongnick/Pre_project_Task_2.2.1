@@ -27,7 +27,7 @@ public class User {
     public User() {
     }
 
-    public void addCar( Car car){
+    public void addCar(Car car) {
         car.setUser(this);
         this.car = car;
     }

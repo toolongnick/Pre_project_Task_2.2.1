@@ -8,8 +8,11 @@ import java.util.List;
 
 public interface UserService {
     void add(User user);
+
     List<User> listUsers();
-    void remove (Long id);
-    User getUser(String car_model, Integer car_series);
+
+    void remove(Long id);
+
+    User getUserWith(String car_model, Integer car_series);
 
 }

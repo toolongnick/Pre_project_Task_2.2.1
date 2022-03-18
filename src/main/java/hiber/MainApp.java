@@ -31,7 +31,7 @@ public class MainApp {
         userService.add(user4);
         userService.remove(4L);
 
-        User fromUser = userService.getUser("Niva",1);
+        User fromUser = userService.getUserWith("Niva", 1);
         System.out.println(fromUser);
 
         List<User> users = userService.listUsers();
@@ -42,7 +42,6 @@ public class MainApp {
             System.out.println("Email = " + user.getEmail());
             System.out.println();
         }
-
         context.close();
     }
 }
