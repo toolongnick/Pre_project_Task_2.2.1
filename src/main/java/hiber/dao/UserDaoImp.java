@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.Query;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,7 +31,7 @@ public class UserDaoImp implements UserDao {
         session.delete(user);
     }
 
-    public User getUserWith(String car_model, Integer car_series) {
+    public User getUserWithModelAndSeries(String car_model, Integer car_series) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("from User u where u.car.model =:model and u.car.series =:series");
         query.setParameter("model", car_model);
@@ -45,14 +44,7 @@ public class UserDaoImp implements UserDao {
 
     @Override
     public List<User> listUsers() {
-        List rawList = sessionFactory.getCurrentSession().createQuery("from User").getResultList();
-        List<User> allUsers = new ArrayList<>(rawList.size());
-        for (Object o : rawList) {
-            if (o instanceof User) {
-                allUsers.add((User) o);
-            }
-        }
-        return allUsers;
+        return sessionFactory.getCurrentSession().createQuery("from User", User.class).list();
     }
 
 }
